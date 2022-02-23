@@ -1,0 +1,7 @@
+{
+  "name": "pancakes-catalog",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

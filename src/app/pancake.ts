@@ -23,7 +23,10 @@ export const pancakesCollection = [
         name: "crêpe sarrasin", 
         description: "une délicieuse crêpe faite à la main",
         location : { longi: 120, lati: 50},
-        picture : {}
+        picture : {
+            filePath: "https://www.pngall.com/wp-content/uploads/5/Pancake-PNG-High-Quality-Image.png",
+            webViewPath: "https://www.pngall.com/wp-content/uploads/5/Pancake-PNG-High-Quality-Image.png"
+        }
     },
 
     {
@@ -31,7 +34,10 @@ export const pancakesCollection = [
         name: "crêpe chocolat", 
         description: "Du chocolat",
         location: {},
-        picture : {}
+        picture : {
+            filePath: "https://www.pngall.com/wp-content/uploads/5/Pancake-PNG-High-Quality-Image.png",
+            webViewPath: "https://www.pngall.com/wp-content/uploads/5/Pancake-PNG-High-Quality-Image.png"
+        }
     },
    
     {
@@ -39,7 +45,10 @@ export const pancakesCollection = [
         name: "crêpe sucre", 
         description: "Du sucre",
         location: { longi: 120, lati: 50},
-        picture : {}
+        picture : {
+            filePath: "https://www.pngall.com/wp-content/uploads/5/Pancake-PNG-High-Quality-Image.png",
+            webViewPath: "https://www.pngall.com/wp-content/uploads/5/Pancake-PNG-High-Quality-Image.png"
+        }
     },
    
     

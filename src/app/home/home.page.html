@@ -13,7 +13,7 @@
           <ion-col size="6" *ngFor="let aPancake of panCollection">
             <div>
               <h3>{{aPancake.name}}</h3>
-              <a href="https://angular.io/guide/routing-overview">
+              <a [routerLink] = "['/pancakes' , aPancake.id]">
                 <ion-img [src] = "aPancake.picture.webViewPath"></ion-img>
               </a>
            </div>

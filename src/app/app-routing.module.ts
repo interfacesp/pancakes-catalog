@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { PancakeDetailsComponent } from './pancake-details/pancake-details.component';
 
 const routes: Routes = [
   {
@@ -13,9 +12,10 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'pancakes/:pancakeId',
-    component: PancakeDetailsComponent,
+    path: 'pancake',
+    loadChildren: () => import('./pancake/pancake.module').then( m => m.PancakePageModule)
   },
+
 ];
 
 @NgModule({

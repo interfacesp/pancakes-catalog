@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { PancakeDetailsComponent } from './pancake-details.component';
+import { PancakePage } from './pancake.page';
 
-describe('PancakeDetailsComponent', () => {
-  let component: PancakeDetailsComponent;
-  let fixture: ComponentFixture<PancakeDetailsComponent>;
+describe('PancakePage', () => {
+  let component: PancakePage;
+  let fixture: ComponentFixture<PancakePage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ PancakeDetailsComponent ],
+      declarations: [ PancakePage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(PancakeDetailsComponent);
+    fixture = TestBed.createComponent(PancakePage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

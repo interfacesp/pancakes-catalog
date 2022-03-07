@@ -15,6 +15,11 @@ const routes: Routes = [
     path: 'pancake',
     loadChildren: () => import('./pancake/pancake.module').then( m => m.PancakePageModule)
   },
+  {
+    path: 'create',
+    loadChildren: () => import('./create-pancake/create-pancake.module').then( m => m.CreatePancakePageModule)
+  },
+
 
 ];
 

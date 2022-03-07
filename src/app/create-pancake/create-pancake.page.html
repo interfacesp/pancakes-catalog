@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Nouvelle crêpe</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <form #panForm="ngForm" novalidate>
+          <ion-list>
+            
+            <!-- Zone photo -->
+              <ion-item>
+                  <ion-label>Photo:</ion-label>
+                  <ion-button type="button" (click)="onAddPicture()" > <ion-icon name="camera"></ion-icon></ion-button>
+              </ion-item>
+
+              <!-- Zone nom -->
+              <ion-item>
+                  <ion-label>Nom: </ion-label>
+                  <ion-input type="text"></ion-input>
+              </ion-item>
+
+              <!-- Zone description -->
+              <ion-item>
+                <ion-label >Description: </ion-label>
+                <ion-textarea placeholder="Votre crêpe en quelques mots..."></ion-textarea>
+            </ion-item>
+
+            <!-- Zone Position géographique -->
+            <ion-item>
+                <ion-label>Position de dégustation</ion-label>
+                <ion-button type="button" (click)="onSaveLocation()">Enregistrer la position</ion-button>
+            </ion-item>
+
+            <ion-item>
+                <ion-button type="submit" (click)="onAddPancake(panForm)"> Enregistrer crêpe </ion-button>
+            </ion-item>
+          </ion-list>
+      </form>
+
+</ion-content>

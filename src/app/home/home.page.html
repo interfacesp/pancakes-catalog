@@ -14,13 +14,21 @@
             <div>
               <h3>{{aPancake.name}}</h3>
               <a [routerLink] = "['/pancake' , aPancake.id]">
-                <ion-img [src] = "aPancake.picture.webViewPath"></ion-img>
+                <ion-img [src] = "aPancake.picture.webViewPath" alt="Default Pancake"></ion-img>
               </a>
            </div>
           
           </ion-col>
       </ion-row>
   </ion-grid>  
+
+
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+      <ion-fab-button (click)="onCreateNew()">
+          <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+  </ion-fab>
 
 
 </ion-content>

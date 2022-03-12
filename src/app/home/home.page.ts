@@ -1,18 +1,22 @@
-import { Component } from '@angular/core';
-import { Pancake,pancakesCollection } from '../Pancake';
+import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import { PancakeService, Pancake} from '../services/pancake.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
 
-  panCollection: Pancake [];
+  panCollection: Pancake[] | {}; 
 
-  constructor(private router: Router) {
-    this.panCollection = pancakesCollection.slice();
+  constructor(private router: Router, 
+            private pancakeService: PancakeService) {
+  }
+
+  ngOnInit() {
+      this.panCollection= this.pancakeService.getPancakes().slice(); 
   }
 
 

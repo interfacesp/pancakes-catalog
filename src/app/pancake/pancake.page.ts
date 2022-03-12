@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Pancake, pancakesCollection } from '../Pancake';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Pancake, PancakeService } from '../services/pancake.service';
 
 @Component({
   selector: 'app-pancake',
@@ -12,7 +12,8 @@ export class PancakePage implements OnInit {
   currentPancake: Pancake | undefined; 
   pancakes: Pancake[] | undefined; 
   constructor(private activatedRoute: ActivatedRoute, 
-              private router: Router) { }
+              private router: Router,
+              private pancakeService: PancakeService) { }
 
   ngOnInit() {
 
@@ -21,7 +22,7 @@ export class PancakePage implements OnInit {
     const pancakeId= Number(routeParams.get("pancakeId"));
 
     //Find pancake with current Id
-    this.currentPancake = pancakesCollection.find( uneCrepe => uneCrepe.id === pancakeId);
+    this.currentPancake = this.pancakeService.pancakesCatalog.find( uneCrepe => uneCrepe.id === pancakeId);
 
   }
 

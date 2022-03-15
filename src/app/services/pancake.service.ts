@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class PancakeService {
 
-   pancakesCatalog: Pancake[]; 
+   public pancakesCatalog: Pancake[]; 
 
   constructor() { 
     this.pancakesCatalog = defaultPancakes.slice(); 
@@ -18,14 +18,19 @@ export class PancakeService {
 
   public addPancake(newPancake: PancakeOptions){
     const lastId = this.pancakesCatalog.length + 1; 
-    this.pancakesCatalog.unshift(
-        {
-          id: lastId,
-          nom: newPancake.name, 
-          description: newPancake.description,
-          picture: newPancake.photo
-        }
-    );
+    const newCrepe = {
+      id: lastId,
+      nom: newPancake.name, 
+      description: newPancake.description,
+      // picture: newPancake.photo
+    }
+    this.pancakesCatalog.push(newCrepe);
+
+    const newArray = this.pancakesCatalog.slice();
+    newArray.push(newCrepe);
+    this.pancakesCatalog = newArray; 
+
+    console.log("Added new crepe: " + newCrepe.id + " name: " + newCrepe.nom);
   }
 
 

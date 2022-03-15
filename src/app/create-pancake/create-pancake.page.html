@@ -12,7 +12,7 @@
   </div>
  
 
-    <form #panForm="ngForm" novalidate>
+    <form #panForm="ngForm" (ngSubmit)="onAddPancake(panForm)" novalidate>
           <ion-list>
             
             <!-- Zone photo -->
@@ -30,7 +30,12 @@
               <!-- Zone description -->
               <ion-item>
                 <ion-label >Description: </ion-label>
-                <ion-textarea name="descr" placeholder="Votre crêpe en quelques mots..." ngModel required #descr="ngModel"></ion-textarea>
+                <ion-textarea name="descr" 
+                              placeholder="Votre crêpe en quelques mots..." 
+                              ngModel 
+                              required #descr="ngModel">
+
+                </ion-textarea>
             </ion-item>
 
             <!-- Zone Position géographique -->
@@ -41,7 +46,7 @@
 
             
               <div>
-                <ion-button type="submit" (click)="onAddPancake(panForm)"> Enregistrer crêpe </ion-button>
+                <ion-button type="submit"> Enregistrer crêpe </ion-button>
               </div>
             
           </ion-list>

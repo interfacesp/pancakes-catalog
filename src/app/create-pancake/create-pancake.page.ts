@@ -42,14 +42,16 @@ export class CreatePancakePage implements OnInit {
   onAddPancake(submittedForm: NgForm){
     if(submittedForm.valid){
 
-      // this.pancakeService.addPancake(
-      //    {
-      //     //Todo
-      //    }   
-
-      // );
-
+        this.pancakeService.addPancake({
+          description: submittedForm.value.descr,
+          name: submittedForm.value.leNom,
+          photo: this.myPhoto
+        });
+        
       this.router.navigateByUrl("/home");
+  
+    }else {
+       alert("Le nom et la description sont obligatoires!");
     }
   }
 

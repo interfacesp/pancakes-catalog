@@ -16,7 +16,7 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
-      this.panCollection= this.pancakeService.getPancakes().slice(); 
+      this.panCollection= this.pancakeService.getPancakes(); 
   }
 
 

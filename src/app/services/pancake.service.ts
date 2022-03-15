@@ -5,16 +5,12 @@ import { Injectable } from '@angular/core';
 })
 export class PancakeService {
 
-   public pancakesCatalog: Pancake[]; 
+   public pancakesCatalog: Pancake[] = defaultPancakes.slice(); 
 
-  constructor() { 
-    this.pancakesCatalog = defaultPancakes.slice(); 
-  }
+  constructor() {}
 
 
-  public getPancakes(){
-    return this.pancakesCatalog;
-  }
+
 
   public addPancake(newPancake: PancakeOptions){
     const lastId = this.pancakesCatalog.length + 1; 
@@ -22,13 +18,9 @@ export class PancakeService {
       id: lastId,
       nom: newPancake.name, 
       description: newPancake.description,
-      // picture: newPancake.photo
+      picture: newPancake.photo
     }
     this.pancakesCatalog.push(newCrepe);
-
-    const newArray = this.pancakesCatalog.slice();
-    newArray.push(newCrepe);
-    this.pancakesCatalog = newArray; 
 
     console.log("Added new crepe: " + newCrepe.id + " name: " + newCrepe.nom);
   }

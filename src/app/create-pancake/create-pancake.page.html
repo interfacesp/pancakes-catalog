@@ -6,6 +6,12 @@
 
 <ion-content>
 
+  <div *ngIf="myPhoto" >
+    <p>Image reçue</p>
+    <ion-img  [src]="myPhoto.webViewPath"></ion-img>
+  </div>
+ 
+
     <form #panForm="ngForm" novalidate>
           <ion-list>
             
@@ -18,13 +24,13 @@
               <!-- Zone nom -->
               <ion-item>
                   <ion-label>Nom: </ion-label>
-                  <ion-input type="text"></ion-input>
+                  <ion-input type="text" name="leNom" ngModel required #leNom="ngModel"></ion-input>
               </ion-item>
 
               <!-- Zone description -->
               <ion-item>
                 <ion-label >Description: </ion-label>
-                <ion-textarea placeholder="Votre crêpe en quelques mots..."></ion-textarea>
+                <ion-textarea name="descr" placeholder="Votre crêpe en quelques mots..." ngModel required #descr="ngModel"></ion-textarea>
             </ion-item>
 
             <!-- Zone Position géographique -->

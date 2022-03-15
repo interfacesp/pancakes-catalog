@@ -8,12 +8,24 @@ export class PancakeService {
    pancakesCatalog: Pancake[]; 
 
   constructor() { 
-    this.pancakesCatalog = defaultPancakes; 
+    this.pancakesCatalog = defaultPancakes.slice(); 
   }
 
 
   public getPancakes(){
     return this.pancakesCatalog;
+  }
+
+  public addPancake(newPancake: PancakeOptions){
+    const lastId = this.pancakesCatalog.length + 1; 
+    this.pancakesCatalog.unshift(
+        {
+          id: lastId,
+          nom: newPancake.name, 
+          description: newPancake.description,
+          picture: newPancake.photo
+        }
+    );
   }
 
 
@@ -22,7 +34,7 @@ export class PancakeService {
 
 export interface Pancake {
   id: number; 
-  name: string, 
+  nom: string, 
   description: string,
   location?: MyLocation,
   picture?: UserPhoto
@@ -39,11 +51,17 @@ export interface MyLocation {
   lati?: number
 }
 
+export interface PancakeOptions {
+  description: string, 
+  name: string, 
+  photo: UserPhoto
+}
+
 
 export const defaultPancakes = [
   {
       id: 1,
-      name: "crêpe Sarrasin", 
+      nom: "crêpe Sarrasin", 
       description: " La crêpe est un mets composé d'une couche plus ou moins fine de pâte" 
                   + "faite à base de farine (principalement) de blé ou de sarrasin)" 
                   + "et d'œufs agglomérés à un liquide (lait, parfois mélangé à de l'eau ou de la bière)."
@@ -58,7 +76,7 @@ export const defaultPancakes = [
 
   {
       id: 2,
-      name: "crêpe au Chocolat", 
+      nom: "crêpe au Chocolat", 
       description: " La crêpe est un mets composé d'une couche plus ou moins fine de pâte" 
                   + "faite à base de farine (principalement) de blé ou de sarrasin)" 
                   + "et d'œufs agglomérés à un liquide (lait, parfois mélangé à de l'eau ou de la bière)."
@@ -68,36 +86,6 @@ export const defaultPancakes = [
           filePath: "https://www.pngall.com/wp-content/uploads/5/Pancake-PNG-High-Quality-Image.png",
           webViewPath: "https://www.pngall.com/wp-content/uploads/5/Pancake-PNG-High-Quality-Image.png"
       }
-  },
+  }
  
-  {
-      id: 3,
-      name: "Crêpe au Sucre", 
-      description: " La crêpe est un mets composé d'une couche plus ou moins fine de pâte" 
-                  + "faite à base de farine (principalement) de blé ou de sarrasin)" 
-                  + "et d'œufs agglomérés à un liquide (lait, parfois mélangé à de l'eau ou de la bière)."
-                  + "Elle est généralement de forme ronde. Source: Wikipedia",
-      location: { longi: 120, lati: 50},
-      picture : {
-          filePath: "https://www.pngall.com/wp-content/uploads/5/Pancake-PNG-High-Quality-Image.png",
-          webViewPath: "https://www.pngall.com/wp-content/uploads/5/Pancake-PNG-High-Quality-Image.png"
-      }
-  },
-
-  {
-      id: 4,
-      name: "Mikado", 
-      description: " La crêpe est un mets composé d'une couche plus ou moins fine de pâte" 
-                  + "faite à base de farine (principalement) de blé ou de sarrasin)" 
-                  + "et d'œufs agglomérés à un liquide (lait, parfois mélangé à de l'eau ou de la bière)."
-                  + "Elle est généralement de forme ronde. Source: Wikipedia",
-      location: { longi: 120, lati: 50},
-      picture : {
-          filePath: "https://www.pngall.com/wp-content/uploads/5/Pancake-PNG-High-Quality-Image.png",
-          webViewPath: "https://www.pngall.com/wp-content/uploads/5/Pancake-PNG-High-Quality-Image.png"
-      }
-  },
- 
-  
-
 ]; 

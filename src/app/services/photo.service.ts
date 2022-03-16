@@ -4,6 +4,7 @@ import { Capacitor } from '@capacitor/core';
 import { Filesystem, Directory } from '@capacitor/filesystem';
 import { Platform } from '@ionic/angular';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -33,6 +34,19 @@ export class PhotoService {
     }; 
     
 
+  }
+
+  public async readPhotoDataBase64(aPath: string){
+
+      console.log("reading path: " + aPath); 
+      const readFile = await Filesystem.readFile(
+        {
+          path: aPath,
+          directory: Directory.Data
+        }
+      );
+
+      return `data:image/jpeg;base64,${readFile.data}`;
   }
 
   private async savePicture(aPhoto: Photo){

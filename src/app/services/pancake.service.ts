@@ -1,29 +1,75 @@
 import { Injectable } from '@angular/core';
+import { Storage } from '@capacitor/storage';
+import {  Platform } from '@ionic/angular';
+import { PhotoService } from './photo.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PancakeService {
 
-   public pancakesCatalog: Pancake[] = defaultPancakes.slice(); 
+  
+   public pancakesCatalog: Pancake[] = []; 
+   private PANCAKES_STORAGE_KEY: string = "pancakes";
 
-  constructor() {}
-
-
+  constructor(private platform: Platform,
+               private photoService: PhotoService) {}
 
 
   public addPancake(newPancake: PancakeOptions){
-    const lastId = this.pancakesCatalog.length + 1; 
+
+    const myNewId = this.pancakesCatalog.length + 1; 
     const newCrepe = {
-      id: lastId,
+      id: myNewId,
       nom: newPancake.name, 
       description: newPancake.description,
       picture: newPancake.photo
     }
+
     this.pancakesCatalog.push(newCrepe);
 
-    console.log("Added new crepe: " + newCrepe.id + " name: " + newCrepe.nom);
+
+    Storage.set(
+      {
+        key: this.PANCAKES_STORAGE_KEY,
+        value: JSON.stringify(this.pancakesCatalog)
+      }
+    );
+
   }
+
+  public async loadSavedPancakes(){
+        console.log("loading...");
+
+        const pancakesAsJson = await Storage.get(
+          {
+            key: this.PANCAKES_STORAGE_KEY
+          }
+        );
+
+        this.pancakesCatalog = JSON.parse(pancakesAsJson.value) || [];
+
+          //Plateforme autre que Appareil mobile => Appli dans navigateur Web
+         if(!this.platform.is("hybrid")){
+
+              for(let aPancake of this.pancakesCatalog){
+                  
+                  if(aPancake.picture){
+                      const picFilePath= aPancake.picture.filePath;
+
+                      console.log("pancakeService - picture file path: " +picFilePath);
+                      const fileData = await this.photoService.readPhotoDataBase64(picFilePath);
+                     
+                     console.log("found data: " + fileData);
+                     
+                      aPancake.picture.webViewPath = fileData;
+                  }
+
+              }
+         }
+  }
+
+
 
 
 }

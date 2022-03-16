@@ -14,7 +14,7 @@
             <div>
               <h3>{{aPancake.nom}}</h3>
               <a [routerLink] = "['/pancake' , aPancake.id]">
-                <ion-img [src] = "aPancake.picture.webViewPath" alt="Default Pancake"></ion-img>
+                <ion-img  *ngIf="aPancake.picture" [src] = "aPancake.picture.webViewPath" alt="Pancake Image here"></ion-img>
               </a>
            </div>
           

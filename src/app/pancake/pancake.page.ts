@@ -29,5 +29,9 @@ export class PancakePage implements OnInit {
   onBackHome(){
     this.router.navigateByUrl("/home");      
   }
+  
+  buildMapsLink(){
+    return ""
+  }
 
 }

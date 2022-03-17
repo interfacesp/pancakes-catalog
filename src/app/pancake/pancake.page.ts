@@ -10,7 +10,6 @@ import { Pancake, PancakeService } from '../services/pancake.service';
 export class PancakePage implements OnInit {
 
   currentPancake: Pancake | undefined; 
-  pancakes: Pancake[] | undefined; 
   constructor(private activatedRoute: ActivatedRoute, 
               private router: Router,
               private pancakeService: PancakeService) { }
@@ -24,6 +23,7 @@ export class PancakePage implements OnInit {
     //Find pancake with current Id
     this.currentPancake = this.pancakeService.pancakesCatalog.find( uneCrepe => uneCrepe.id === pancakeId);
 
+    console.log("current pancake: "+ JSON.stringify(this.currentPancake));
   }
 
   onBackHome(){

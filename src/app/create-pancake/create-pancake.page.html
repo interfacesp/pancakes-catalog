@@ -44,6 +44,14 @@
                 <ion-button type="button" (click)="onSaveLocation()">Enregistrer la position</ion-button>
             </ion-item>
 
+            <ion-item>
+                <ion-label *ngIf="myPosition">
+                   Latitude: {{myPosition.lati}} <br/>
+                </ion-label> 
+                <ion-label *ngIf="myPosition">
+                  Longitude : {{myPosition.longi}}
+                </ion-label>
+            </ion-item>
             
               <div>
                 <ion-button type="submit"> Enregistrer crêpe </ion-button>

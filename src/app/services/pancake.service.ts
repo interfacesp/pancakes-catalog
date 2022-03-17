@@ -26,18 +26,19 @@ export class PancakeService {
       id: myNewId,
       nom: newPancake.name, 
       description: newPancake.description,
-      picture: newPancake.photo
+      picture: newPancake.photo,
+      location: newPancake.loc
     }
 
     this.pancakesCatalog.push(newCrepe);
 
 
-    Storage.set(
-      {
-        key: this.PANCAKES_STORAGE_KEY,
-        value: JSON.stringify(this.pancakesCatalog)
-      }
-    );
+    // Storage.set(
+    //   {
+    //     key: this.PANCAKES_STORAGE_KEY,
+    //     value: JSON.stringify(this.pancakesCatalog)
+    //   }
+    // );
 
   }
 
@@ -100,7 +101,8 @@ export interface MyLocation {
 export interface PancakeOptions {
   description: string, 
   name: string, 
-  photo: UserPhoto
+  photo: UserPhoto,
+  loc: MyLocation
 }
 
 

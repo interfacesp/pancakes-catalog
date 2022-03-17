@@ -14,8 +14,6 @@ export class CreatePancakePage implements OnInit {
 
    myPhoto: UserPhoto; 
    myPosition: MyLocation;
-   pancakeName: string; 
-   pancakeDescription: string; 
 
  
   constructor(private router: Router, 

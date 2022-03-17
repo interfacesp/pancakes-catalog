@@ -9,7 +9,7 @@ import { PancakeService, Pancake} from '../services/pancake.service';
 })
 export class HomePage implements OnInit {
 
-  panCollection: Pancake[] | {}; 
+  panCollection: Pancake[]; 
 
   constructor(private router: Router, 
             private pancakeService: PancakeService) {

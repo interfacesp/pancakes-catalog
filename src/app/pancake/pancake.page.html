@@ -27,14 +27,16 @@
     </ion-item>
 
     <ion-item *ngIf="currentPancake.location">
-      <ion-label>Latitude: {{currentPancake.location.lati}}</ion-label>
-      <ion-label>Longitude: {{currentPancake.location.longi}}</ion-label>
-      <a href='https://google.com/maps/@{{currentPancake.location.lati}},{{currentPancake.location.longi}},15z'
-         target="_blank">
-        <ion-button>View on Google Maps</ion-button>
-      </a>
+      <ion-label>Latitude: {{currentPancake.location.lati}}</ion-label>    
     </ion-item>
 
+    <ion-item *ngIf="currentPancake.location">
+      <ion-label>Longitude: {{currentPancake.location.longi}}</ion-label>    
+    </ion-item>
+
+    <ion-item>
+      <ion-button (click)="openMapsLink()">Maps</ion-button>    
+    </ion-item>
 
 </ion-card>
 

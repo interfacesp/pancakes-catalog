@@ -30,8 +30,12 @@ export class PancakePage implements OnInit {
     this.router.navigateByUrl("/home");      
   }
   
-  buildMapsLink(){
-    return ""
+  openMapsLink(){
+    const myLongi = this.currentPancake.location.longi; 
+    const myLati = this.currentPancake.location.lati;
+    const defaultZoom = 17;
+    const link = "https://google.com/maps/@"+ myLati +','+ myLongi +','+defaultZoom;
+    window.open(link);
   }
 
 }

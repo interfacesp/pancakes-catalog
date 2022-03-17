@@ -13,7 +13,10 @@ export class PancakeService {
    private PANCAKES_STORAGE_KEY: string = "pancakes";
 
   constructor(private platform: Platform,
-               private photoService: PhotoService) {}
+               private photoService: PhotoService) {
+
+        this.pancakesCatalog = defaultPancakes.slice();         
+  }
 
 
   public addPancake(newPancake: PancakeOptions){
@@ -39,7 +42,7 @@ export class PancakeService {
   }
 
   public async loadSavedPancakes(){
-        console.log("loading...");
+        // console.log("loading...");
 
         const pancakesAsJson = await Storage.get(
           {
@@ -57,10 +60,10 @@ export class PancakeService {
                   if(aPancake.picture){
                       const picFilePath= aPancake.picture.filePath;
 
-                      console.log("pancakeService - picture file path: " +picFilePath);
+                      // console.log("pancakeService - picture file path: " +picFilePath);
                       const fileData = await this.photoService.readPhotoDataBase64(picFilePath);
                      
-                     console.log("found data: " + fileData);
+                    //  console.log("found data: " + fileData);
                      
                       aPancake.picture.webViewPath = fileData;
                   }

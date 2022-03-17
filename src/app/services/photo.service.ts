@@ -38,7 +38,7 @@ export class PhotoService {
 
   public async readPhotoDataBase64(aPath: string){
 
-      console.log("reading path: " + aPath); 
+      // console.log("reading path: " + aPath); 
       const readFile = await Filesystem.readFile(
         {
           path: aPath,
@@ -67,9 +67,7 @@ export class PhotoService {
          // Will later Display the new image by rewriting the 'file://' path to HTTP
         // Details: https://ionicframework.com/docs/building/webview#file-protocol
 
-        console.log("saving file (native)- webViewPath:" + Capacitor.convertFileSrc(savedFile.uri));
-        console.log("saving file (native)- path: " + savedFile.uri);
-
+  
         return {
           filePath: savedFile.uri, 
           webViewPath: Capacitor.convertFileSrc(savedFile.uri)

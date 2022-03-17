@@ -20,7 +20,7 @@ export class HomePage implements OnInit {
   }
 
   async loadPancakes() {
-    await this.pancakeService.loadSavedPancakes();
+    // await this.pancakeService.loadSavedPancakes();
     this.panCollection= this.pancakeService.pancakesCatalog;
   }
 

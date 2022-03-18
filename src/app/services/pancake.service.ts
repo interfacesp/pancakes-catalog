@@ -9,13 +9,11 @@ import { PhotoService } from './photo.service';
 export class PancakeService {
 
   
-   public pancakesCatalog: Pancake[] = []; 
-   private PANCAKES_STORAGE_KEY: string = "pancakes";
+   public pancakesCatalog: Pancake[] = defaultPancakes.slice();
+   private PANCAKES_STORAGE_KEY: string = "tiroir-pancakes";
 
   constructor(private platform: Platform,
                private photoService: PhotoService) {
-
-        this.pancakesCatalog = defaultPancakes.slice();         
   }
 
 
@@ -32,13 +30,14 @@ export class PancakeService {
 
     this.pancakesCatalog.push(newCrepe);
 
+    console.log(JSON.stringify(this.pancakesCatalog));
 
-    // Storage.set(
-    //   {
-    //     key: this.PANCAKES_STORAGE_KEY,
-    //     value: JSON.stringify(this.pancakesCatalog)
-    //   }
-    // );
+    Storage.set(
+      {
+        key: this.PANCAKES_STORAGE_KEY,
+        value: JSON.stringify(this.pancakesCatalog)
+      }
+    );
 
   }
 

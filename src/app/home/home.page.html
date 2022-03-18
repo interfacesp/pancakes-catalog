@@ -6,12 +6,12 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content  [fullscreen]="true">
   
   <ion-grid>
       <ion-row >
           <ion-col size="6" *ngFor="let aPancake of panCollection">
-            <div>
+            <div class="centrage">
               <h3>{{aPancake.nom}}</h3>
               <a [routerLink] = "['/pancake' , aPancake.id]">
                 <ion-img  *ngIf="aPancake.picture" [src] = "aPancake.picture.webViewPath" alt="Pancake Image here"></ion-img>

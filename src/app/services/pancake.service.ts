@@ -9,7 +9,7 @@ import { PhotoService } from './photo.service';
 export class PancakeService {
 
   
-   public pancakesCatalog: Pancake[] = defaultPancakes.slice();
+   public pancakesCatalog: Pancake[] ;
    private PANCAKES_STORAGE_KEY: string = "tiroir-pancakes";
 
   constructor(private platform: Platform,
@@ -49,15 +49,17 @@ export class PancakeService {
             key: this.PANCAKES_STORAGE_KEY
           }
         );
-
-        this.pancakesCatalog = JSON.parse(pancakesAsJson.value) || [];
+        
+        //On essaie d'abord de lire le contenu de notre mémoire permanente (Storage)
+        //Si ça ne fonctionne pas => on peut en profiter pour charger le tableau par défaut
+        this.pancakesCatalog = JSON.parse(pancakesAsJson.value) || defaultPancakes.slice();
 
           //Plateforme autre que Appareil mobile => Appli dans navigateur Web
          if(!this.platform.is("hybrid")){
 
               for(let aPancake of this.pancakesCatalog){
-                  
-                  if(aPancake.picture){
+                  //Si le chemin d'accès existe => on peut charger la photo
+                  if(aPancake.picture && aPancake.picture.filePath){
                       const picFilePath= aPancake.picture.filePath;
 
                       // console.log("pancakeService - picture file path: " +picFilePath);
@@ -71,6 +73,8 @@ export class PancakeService {
               }
          }
   }
+
+
 
 
 
@@ -116,7 +120,6 @@ export const defaultPancakes = [
 
       location : { longi: 120, lati: 50},
       picture : {
-          filePath: "https://www.pngall.com/wp-content/uploads/5/Pancake-PNG-High-Quality-Image.png",
           webViewPath: "https://www.pngall.com/wp-content/uploads/5/Pancake-PNG-High-Quality-Image.png"
       }
   },
@@ -130,7 +133,6 @@ export const defaultPancakes = [
                   + "Elle est généralement de forme ronde. Source: Wikipedia",
       location: {},
       picture : {
-          filePath: "https://www.pngall.com/wp-content/uploads/5/Pancake-PNG-High-Quality-Image.png",
           webViewPath: "https://www.pngall.com/wp-content/uploads/5/Pancake-PNG-High-Quality-Image.png"
       }
   }
